@@ -1,81 +1,33 @@
 /* eslint-disable react/prop-types */
-const Header = (props) => {
+const Hello = ({ name, age }) => {
 
-  return (
-    <>
-      <h1>
-        {props.course}
-      </h1>
-    </>
-  )
-
-}
-
-const Part = (props) => {
-
-  return (
-    <>
-      <p>
-        {props.part.name} : {props.part.exercises}
-      </p>
-    </>
-  )
-}
-
-const Content = (props) => {
+  const bornYear = () => {
+    return new Date().getFullYear() - age
+  }
 
   return (
     <div>
-      <Part part={props.parts[0]} />
-      <Part part={props.parts[1]} />
-      <Part part={props.parts[2]} />
+      <p>
+        Hello {name}, you are {age} years old
+      </p>
+      <p>So you were probably born in {bornYear()}</p>
+      <hr></hr>
     </div>
   )
-}
-
-const Total = (props) => {
-
-  return (
-    <>
-      <p>
-        Number of exercices is: {props.totalExercises}
-      </p>
-    </>
-  )
-
 }
 
 const App = () => {
-  const course = 'Half Stack application development'
-
-  const parts = [
-
-    {
-      name: "Fundamentals of React",
-      exercises: 10
-    },
-
-    {
-      name: "Using props to pass data",
-      exercises: 7
-    },
-
-    {
-      name: "State of a component",
-      exercises: 14
-    }
-  ]
+  const name = 'Peter'
+  const age = 10
 
   return (
     <div>
-      <Header course={course} />
-
-      <Content parts={parts} />
-
-      <Total totalExercises={parts[0].exercises + parts[1].exercises + parts[2].exercises} />
+      <h1>Greetings</h1>
+      <Hello name="Pepe" age={29} />
+      <Hello name={name} age={age} />
     </div>
   )
 }
 
 
-export default App
+export default App;
